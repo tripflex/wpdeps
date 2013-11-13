@@ -35,32 +35,22 @@ if ( ! class_exists( 'WPPluginDependencies' ) ) {
 			$this->plugin = plugin_basename( $plugin );
 			$this->dependencies = $dependencies;
 
-			add_action( 'admin_head', array( $this, 'admin_head' ) );
+			add_action( 'admin_enqueue_scripts', array( $this, '_enqueue_styles_and_scripts' ) );
 			add_action( 'after_plugin_row', array( $this, 'after_plugin_row' ) );
 		}
 
-		function admin_head() {
-			echo '<style>
-				.plugins tr.dependencies .dependencies-active, .plugins tr.dependencies .active a { color: #669900; }
-				.plugins tr.dependencies .dependencies-required, .plugins tr.dependencies .required a { color: #C00; }
-				.js .plugins tr.dependencies .required, .plugins tr.dependencies.dependencies-active { display: none; }
-				</style>';
-			echo "<script>
-				jQuery(function($) {
-					$('.plugins tr.dependencies-active').each(function(){
-						var id = $(this).attr('id');
-						$(this).prev().find('.row-actions').append(' | <a href=\"#' + id + '\" class=\"dependencies-toggle\" data-toggle-text=\"Hide Dependencies\">Show Dependencies</a>');
-					});
-					$('a.dependencies-toggle').on('click', function(e){
-						var href = $(this).attr('href');
-						var text = $(this).text();
-						var toggle_text = $(this).attr('data-toggle-text');
-						$(href).toggle();
-						$(this).attr('data-toggle-text', text).text(toggle_text);
-						e.preventDefault();
-					});
-				});
-				</script>";
+		/**
+		 * Enqueue Styles and Scripts
+		 *
+		 * Loads stylesheets and Javascript files on the plugins admin page.
+		 *
+		 * @param  string  $hook  Current page hook.
+		 */
+		function _enqueue_styles_and_scripts( $hook ) {
+			if ( 'plugins.php' == $hook ) {
+				wp_enqueue_script( 'wp-plugin-dependencies', plugins_url( '/js/wp-plugin-dependencies.js', __FILE__ ), array( 'jquery' ), '0.1' );
+				wp_enqueue_style( 'wp-plugin-dependencies', plugins_url( '/css/wp-plugin-dependencies.css', __FILE__ ), null, '0.1' );
+			}
 		}
 
 		/**

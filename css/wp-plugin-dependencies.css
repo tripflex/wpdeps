@@ -1,0 +1,13 @@
+
+.plugins tr.dependencies .dependencies-active,
+.plugins tr.dependencies .active a {
+	color: #669900;
+}
+.plugins tr.dependencies .dependencies-required,
+.plugins tr.dependencies .required a {
+	color: #C00;
+}
+.js .plugins tr.dependencies .required,
+.plugins tr.dependencies.dependencies-active {
+	display: none;
+}
