@@ -1,28 +1,12 @@
 <?php
-
-/*
-WP Plugin Dependencies
-Helper class for plugins that depend on other plugins being installed.
-
-Author: Ben Huson
-Version: 0.1
-
-Usage Example:
-
-<?php
-// Require this file
-require_once( 'wp-plugin-dependencies/wp-plugin-dependencies.php' );
-
-// Set Dependencies
-$dependencies = new WPPluginDependencies( __FILE__, array(
-	'multiple-post-thumbnails/multi-post-thumbnails.php' => array(
-		'name' => 'Multiple Post Thumbnails',
-		'url'  => 'http://wordpress.org/plugins/multiple-post-thumbnails/'
-	)
-) );
-?>
-
-*/
+/**
+ * Includes Name: WP Plugin Dependencies
+ * Includes URI:  https://github.com/tripflex/wp-plugin-dependencies
+ * Description: Helper class for plugins that depend on other plugins being installed.
+ * Author:      Ben Huson, Myles McNamara
+ * Author URI:  http://plugins.smyl.es
+ * Version:     1.0.0
+ */
 
 if ( ! class_exists( 'WPPluginDependencies' ) ) {
 
