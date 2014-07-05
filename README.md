@@ -1,9 +1,13 @@
 wp-plugin-dependencies
 ======================
 
+**Authors:** Ben Huson, Myles McNamara
+**Version:** 1.0.0
+
+
 A framework to help build WordPress plugins which need to check for other plugin dependencies.
 
-= Usage
+# Usage
 
 ```php
 // Require this file
