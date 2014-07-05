@@ -2,6 +2,7 @@ wp-plugin-dependencies
 ======================
 
 **Authors:** Ben Huson, Myles McNamara
+
 **Version:** 1.0.0
 
 
